@@ -1,6 +1,6 @@
-# Blockchain-KYC Backend
+# Blockchain-KYC Contracts
 
-The backend that is responsible for oauth and serving the API for onchain oracles to request kyc info from, stands behind a reverse proxy.
+The solidity smart contracts that main logic for the kyc authentication.
 
 # Setup Configuration
 - Modify MORPHEUS_ORACLE, and DEFAULT_BOUNTY address in [KYC.sol](src/KYC.sol).
