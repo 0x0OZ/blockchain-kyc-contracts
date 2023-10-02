@@ -1,3 +1,13 @@
+# Blockchain-KYC Backend
+
+The backend that is responsible for oauth and serving the API for onchain oracles to request kyc info from, stands behind a reverse proxy.
+
+# Setup Configuration
+- Modify MORPHEUS_ORACLE, and DEFAULT_BOUNTY address in [KYC.sol](src/KYC.sol).
+- Modify the deployer script to fit your needs in [KYCFactory.s.sol](script/KYCFactory.s.sol). 
+- Follow instructions bellow to deploy.
+- Enjoy!
+
 ## Foundry
 
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
