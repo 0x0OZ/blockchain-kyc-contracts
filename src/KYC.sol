@@ -224,4 +224,11 @@ contract KYC is Initializable {
         return kycRequests[userAddress].isKYCRequested;
 
     }
+    
+    /// @dev for the demo only
+    /// @notice get User's KYC request data
+    /// @return path to the user's profile on the social platform
+    function getUserHandle(address userAddress) external view returns (string memory) {
+        return string.concat(platformBaseUrl,"/", usersKYC[userAddress].userHandle);
+    }
 }

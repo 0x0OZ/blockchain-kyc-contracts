@@ -20,7 +20,8 @@ contract Monate is Script {
     function requestKYC(string memory username) public {
         address kycAddress = factory.getKYCVerifierAddress("Github");
         KYC kyc = KYC(payable(kycAddress));
-        kyc.requestKYC{value: 1 ether}(username);
+        address(kyc).call{value: 1 ether}('');
+        kyc.requestKYC(username);
     }
 
     function createKYC() public {
@@ -43,7 +44,7 @@ contract Monate is Script {
     }
 
     function getFactory() public pure returns (address) {
-        return address(0x809d550fca64d94Bd9F66E60752A544199cfAC3D);
+        return address(0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9);
     }
 
     function getFeedId() public view returns (uint256) {
@@ -52,16 +53,17 @@ contract Monate is Script {
     }
 
     function run() public {
-        // createFactory();
-        // createKYC();
+        createFactory();
+        createKYC();
         factory = KYCFactory(payable(getFactory()));
 
         console.log("factory address: %s", address(factory));
         KYC kyc = KYC(payable(factory.getKYCVerifierAddress("Github")));
+        // kyc.removeKYCRequest();
         console.log("kyc address: %s", address(kyc));
         console.log("feed: %s", getFeedId());
         console.log("isKYCVerified: %s", kyc.isKYCVerified());
-        // requestKYC("0x0OZ");
+        requestKYC("0x0OZ");
         // verifyKYC();
     }
 }
