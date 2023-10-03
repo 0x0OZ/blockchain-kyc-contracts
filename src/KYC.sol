@@ -52,7 +52,7 @@ contract KYC is Initializable {
     }
 
     uint160 public constant KYC_REMOVAL_PENDING_TIME = 1 days;
-    address public constant MORPHEUS_ORACLE = 0x5FbDB2315678afecb367f032d93F642f64180aa3;
+    address public constant MORPHEUS_ORACLE = 0x0000000000071821e8033345A7Be174647bE0706;
     uint256 public constant DEFAULT_BOUNTY = 1000000000000000000;
     string internal APIEndPoint;
 

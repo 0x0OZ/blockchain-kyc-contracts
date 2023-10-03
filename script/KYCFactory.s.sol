@@ -55,7 +55,7 @@ contract Monate is Script {
     function run() public {
         createFactory();
         createKYC();
-        factory = KYCFactory(payable(getFactory()));
+        // factory = KYCFactory(payable(getFactory()));
 
         console.log("factory address: %s", address(factory));
         KYC kyc = KYC(payable(factory.getKYCVerifierAddress("Github")));
@@ -63,7 +63,7 @@ contract Monate is Script {
         console.log("kyc address: %s", address(kyc));
         console.log("feed: %s", getFeedId());
         console.log("isKYCVerified: %s", kyc.isKYCVerified());
-        requestKYC("0x0OZ");
+        // requestKYC("0x0OZ");
         // verifyKYC();
     }
 }
