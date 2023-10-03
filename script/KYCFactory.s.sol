@@ -26,10 +26,10 @@ contract Monate is Script {
 
     function createKYC() public {
         factory.createKYCVerifier(APIEndPoint, "Github", "https://github.com", keccak256(abi.encodePacked("Github")));
-        factory.createKYCVerifier(APIEndPoint, "Twitter", "https://twitter.com", keccak256(abi.encodePacked("Twitter")));
-        factory.createKYCVerifier(APIEndPoint, "Reddit", "https://reddit.com", keccak256(abi.encodePacked("Reddit")));
-        factory.createKYCVerifier(APIEndPoint, "Discord", "https://discord.com", keccak256(abi.encodePacked("Discord")));
-        factory.createKYCVerifier(APIEndPoint, "Google", "https://Google.com", keccak256(abi.encodePacked("Google")));
+        // factory.createKYCVerifier(APIEndPoint, "Twitter", "https://twitter.com", keccak256(abi.encodePacked("Twitter")));
+        // factory.createKYCVerifier(APIEndPoint, "Reddit", "https://reddit.com", keccak256(abi.encodePacked("Reddit")));
+        // factory.createKYCVerifier(APIEndPoint, "Discord", "https://discord.com", keccak256(abi.encodePacked("Discord")));
+        // factory.createKYCVerifier(APIEndPoint, "Google", "https://Google.com", keccak256(abi.encodePacked("Google")));
     }
 
     function verifyKYC() public {
@@ -53,8 +53,11 @@ contract Monate is Script {
     }
 
     function run() public {
+        vm.stopBroadcast();
+        vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
         createFactory();
         createKYC();
+        vm.stopBroadcast();
         // factory = KYCFactory(payable(getFactory()));
 
         console.log("factory address: %s", address(factory));
